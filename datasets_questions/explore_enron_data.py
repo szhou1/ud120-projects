@@ -24,13 +24,24 @@ print 'people count:', len(enron_data)
 print 'features count: ', len(enron_data[enron_data.keys()[0]])
 # print ' - ', len(enron_data[0])
 
-poi_count = 0;
-for person in enron_data:
-    # print person
-    if enron_data[person]["poi"] == 1:
-        poi_count += 1
+print 'poi count:', sum(1 for x in enron_data.keys() if enron_data[x]['poi']==1)
 
-print 'poi count:', poi_count
-# print enron_data.keys()
+print enron_data.keys()
 print enron_data['PRENTICE JAMES']['total_stock_value']
+print enron_data['COLWELL WESLEY']['from_this_person_to_poi']
+print enron_data['SKILLING JEFFREY K']['exercised_stock_options']
+print 'lay', enron_data['LAY KENNETH L']
+print 'lay', enron_data['LAY KENNETH L']['exercised_stock_options']
+print enron_data['FASTOW ANDREW S']['exercised_stock_options']
 
+# quantified salary
+print 'have salary info:', sum(1 for x in enron_data.keys() if enron_data[x]['salary']!='NaN')
+
+# known email address
+print 'have email addr:', sum(1 for x in enron_data.keys() if enron_data[x]['email_address']<>'NaN')
+
+# no total payments
+print 'no total payments:', sum(1 for x in enron_data.keys() if enron_data[x]['total_payments']=='NaN')
+
+# no total payments and POI
+print 'no total payments and poi:', sum(1 for x in enron_data.keys() if enron_data[x]['total_payments']=='NaN' and enron_data[x]['poi']==True)
