@@ -118,8 +118,8 @@ def targetFeatureSplit( data ):
     target = []
     features = []
     for item in data:
-        target.append( item[0] )
-        features.append( item[1:] )
+        target.append( item[0] ) # is POI true/false
+        features.append( item[1:] ) # salary, exercised_stock_options, total_payments
 
     return target, features
 
